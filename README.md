@@ -77,3 +77,61 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# CodePush integration
+
+First you need to install these packages:
+
+```bash
+#if u don't have appcenter-cli installed:
+npm install -g appcenter-cli
+
+#package
+yarn add react-native-code-push
+
+#additional packages
+yarn add appcenter appcenter-analytics appcenter-crashes --save-exact
+```
+
+Login with appcenter:
+
+```bash
+appcenter login
+```
+
+Then run this command from root of the project to install ios deps:
+```bash
+cd ios && pod install && cd ..
+```
+
+Need to change file AppDelegate.mm:
+```c
+// Add these imports to the top of AppDelegate.mm or AppDelegate.m file
+// AppCenter CodePush
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
+#import <CodePush/CodePush.h>
+#import "AppDelegate.h"
+```
+
+```c
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+#else
+   //Change this line to return [CodePush bundleURL];
+  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+#endif
+```
+
+Add to info.plist DeploymentKey obtained from appcenter dashboard (Distribute => CodePush):
+```xml
+<key>CodePushDeploymentKey</key>
+<string>Your-deployment-key</string>
+```
+
+To deploy app by air (will work only if you haven't changed native dependencies):
+
+```bash
+appcenter codepush release-react -a acc/app-name -d Production
+```

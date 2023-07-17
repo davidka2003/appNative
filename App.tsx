@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import codePush from 'react-native-code-push';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -115,4 +116,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+let codePushOptions = {checkFrequency: codePush.CheckFrequency.ON_APP_RESUME};
+const CodePushApp = codePush(codePushOptions)(App);
+export default CodePushApp;
