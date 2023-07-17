@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>8Ky5rcLeEqmNKNn_M5E4UiQg82_veA-0DKN5y</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -35,8 +37,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Meetmap needs to track user location to share it with friends</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Meetmap needs to track user location to share it with friends</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Meetmap needs to track user location to share it with friends</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -50,7 +60,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>CodePushDeploymentKey</key>
-	<string>8Ky5rcLeEqmNKNn_M5E4UiQg82_veA-0DKN5y</string>
+	<string>8rQzi6f0e6fQlLycaflr8KGF3fE7c30BeCTgw</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
